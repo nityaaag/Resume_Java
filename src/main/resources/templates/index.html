@@ -121,10 +121,43 @@
             box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
         }
 
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            color: var(--subtle-text);
+            font-size: 1.4em;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
         .main-content {
             width: 65%;
             padding: 40px;
             box-sizing: border-box;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .main-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .main-content::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 10px;
+        }
+
+        .main-content::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
         }
 
         .main-section {
@@ -206,10 +239,29 @@
             display: block;
         }
 
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-link:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
         .timeline-item p {
             margin: 5px 0 0;
             color: var(--text-color);
             font-weight: 300;
+            font-size: 0.95em;
+            line-height: 1.5;
         }
 
     </style>
@@ -222,6 +274,13 @@
         <h1 th:text="${resume.name}">Nitya Gupta</h1>
         <p th:text="${resume.role}">BCA Student | Developer | NCC Cadet</p>
         <p th:text="${resume.university}">Christ University, Pune</p>
+
+        <div class="social-links">
+            <a href="https://github.com/nityaaag" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com/in/nityaa-g/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a th:href="'mailto:' + ${resume.email}" th:title="${resume.email}"><i class="fa-solid fa-envelope"></i></a>
+            <a th:href="'tel:' + ${resume.phone}" th:title="${resume.phone}"><i class="fa-solid fa-phone"></i></a>
+        </div>
 
         <div class="sidebar-section">
             <h2><i class="fa-solid fa-laptop-code"></i> Skills</h2>
@@ -252,6 +311,7 @@
                 <li th:each="exp : ${resume.experience}" class="timeline-item">
                     <strong th:text="${exp.title}">Intern</strong>
                     <span th:text="${exp.company}">Urja Global</span>
+                    <p th:text="${exp.description}">Details about the role...</p>
                 </li>
             </ul>
         </div>
@@ -262,6 +322,10 @@
                 <li th:each="project : ${resume.projects}" class="timeline-item">
                     <strong th:text="${project.name}">MeraMoney</strong>
                     <p th:if="${project.description != null && !project.description.isEmpty()}" th:text="${project.description}">Expense Tracker</p>
+                    <a th:if="${project.url != null}" th:href="${project.url}" target="_blank" class="project-link">
+                        View on GitHub 
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
                 </li>
             </ul>
         </div>

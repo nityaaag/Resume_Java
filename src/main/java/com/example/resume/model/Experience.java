@@ -3,10 +3,12 @@ package com.example.resume.model;
 public class Experience {
     private String title;
     private String company;
+    private String description;
 
-    public Experience(String title, String company) {
+    public Experience(String title, String company, String description) {
         this.title = title;
         this.company = company;
+        this.description = description;
     }
 
     public String getTitle() {
@@ -23,5 +25,13 @@ public class Experience {
 
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

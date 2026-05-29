@@ -3,10 +3,12 @@ package com.example.resume.model;
 public class Project {
     private String name;
     private String description;
+    private String url;
 
-    public Project(String name, String description) {
+    public Project(String name, String description, String url) {
         this.name = name;
         this.description = description;
+        this.url = url;
     }
 
     public String getName() {
@@ -23,5 +25,13 @@ public class Project {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

@@ -6,15 +6,19 @@ public class Resume {
     private String name;
     private String role;
     private String university;
+    private String email;
+    private String phone;
     private List<String> skills;
     private List<Experience> experience;
     private List<Project> projects;
     private List<String> interests;
 
-    public Resume(String name, String role, String university, List<String> skills, List<Experience> experience, List<Project> projects, List<String> interests) {
+    public Resume(String name, String role, String university, String email, String phone, List<String> skills, List<Experience> experience, List<Project> projects, List<String> interests) {
         this.name = name;
         this.role = role;
         this.university = university;
+        this.email = email;
+        this.phone = phone;
         this.skills = skills;
         this.experience = experience;
         this.projects = projects;
@@ -43,6 +47,22 @@ public class Resume {
 
     public void setUniversity(String university) {
         this.university = university;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public List<String> getSkills() {
